@@ -1,5 +1,7 @@
 import 'package:assessment/Features/Detail/Data/detail_repo_implementaion.dart';
 import 'package:assessment/Features/Detail/Presentation/detail_bloc.dart';
+import 'package:assessment/Features/History/Data/history_repo_implementation.dart';
+import 'package:assessment/Features/History/Presentation/history_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:assessment/Features/Home/Presentation/home_page.dart';
@@ -28,7 +30,8 @@ class DogApp extends StatelessWidget {
           create: (_) => HomePageBloc(fetchDogsDataRepo: FetchDataImp()),
 
         ),
-        BlocProvider(create:   (_) => DetailBoc(detailRepoDefinition: DetailRepoImplementaion()),)
+        BlocProvider(create:   (_) => DetailBoc(detailRepoDefinition: DetailRepoImplementation()),),
+        BlocProvider(create: (_)=> HistoryBloc(historyRepoDefinition: HistoryRepoImplementation())),
       ],
       child: const MaterialApp(
         home: HomePage(),

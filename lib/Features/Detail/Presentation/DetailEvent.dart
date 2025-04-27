@@ -1,7 +1,9 @@
+import '../../Home/Data/dog_modal.dart';
+
 abstract class DetailsEvent{
 }
 
 class AdoptEvent extends DetailsEvent{
-  String id;
-  AdoptEvent(this.id);
+  DogListModal data;
+  AdoptEvent(this.data);
 }

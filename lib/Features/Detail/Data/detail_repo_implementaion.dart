@@ -1,14 +1,24 @@
 import 'package:assessment/Features/Detail/Data/details_data_provider.dart';
 import 'package:assessment/Features/Detail/Domain/detail_repo_definition.dart';
+import 'package:assessment/Features/Home/Data/dog_modal.dart';
+import 'package:flutter/cupertino.dart';
 
-class DetailRepoImplementaion extends DetailRepoDefinition{
+class DetailRepoImplementation extends DetailRepoDefinition{
 
   @override
-  Future<void> adoptDog(String id) async {
+  Future<void> adoptDog(DogListModal modal) async {
     var response = await DetailsDataProvider().getData();
-    var data= updateCanAdopt(id, false, response);
+    var data= updateCanAdopt(modal.id.toString(), false, response);
+
+    Map<String,dynamic> record = {
+      "id":modal.id,
+      "name":modal.name,
+      "url":modal.url,
+      "date":DateTime.now()
+    };
 
     await DetailsDataProvider().setData(data);
+    await DetailsDataProvider().setHistoryData(record);
 
   }
 
@@ -21,7 +31,7 @@ class DetailRepoImplementaion extends DetailRepoDefinition{
 
 
     } catch (e) {
-      print("Dog with id $id not found.");
+      debugPrint("Dog with id $id not found.");
     }
     return data;
   }

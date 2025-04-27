@@ -14,7 +14,7 @@ class DetailBoc extends Bloc<DetailsEvent,DetailState>{
 
       await Future.delayed(const Duration(seconds: 2));
 
-      await detailRepoDefinition.adoptDog(event.id);
+      await detailRepoDefinition.adoptDog(event.data);
 
       emit(AdoptIsCompleted());
 

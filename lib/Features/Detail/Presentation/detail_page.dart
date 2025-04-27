@@ -56,7 +56,7 @@ class DetailPage extends StatelessWidget {
 
             GestureDetector(
               onTap: (){
-                dogListModal.canAdopt!? context.read<DetailBoc>().add(AdoptEvent(dogListModal.id.toString())): debugPrint("Cant Adopt");
+                dogListModal.canAdopt!? context.read<DetailBoc>().add(AdoptEvent(dogListModal)): debugPrint("Cant Adopt");
 
               },
               child: Container(

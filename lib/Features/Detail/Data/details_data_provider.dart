@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 
 class DetailsDataProvider{
+  List<Map<String,dynamic>> list=[];
 
   var box = Hive.box("dogBox");
 
@@ -15,5 +17,20 @@ class DetailsDataProvider{
 
   }
 
+  Future<void> setHistoryData(Map<String,dynamic> data)async{
+
+    try{
+      list = await box.get("history",defaultValue: []);
+    }
+    catch(e){
+      debugPrint("list not fount");
+    }
+
+    list.add(data);
+    await box.put("history", list);
+
+
+
+  }
 
 }

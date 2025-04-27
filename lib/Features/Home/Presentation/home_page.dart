@@ -1,4 +1,5 @@
 import 'package:assessment/Features/Detail/Presentation/detail_page.dart';
+import 'package:assessment/Features/History/Presentation/history_page.dart';
 import 'package:assessment/Features/Home/Presentation/home_page_bloc.dart';
 import 'package:assessment/Features/Home/Presentation/home_page_event.dart';
 import 'package:assessment/Features/Home/Presentation/home_page_state.dart';
@@ -41,6 +42,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Dogs List"),
+
+        actions: [
+
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> const HistoryPage()));
+            },
+            child:const Icon(Icons.history),
+          )
+
+        ],
       ),
 
       body: SafeArea(child: BlocConsumer<HomePageBloc,HomePageState>(
