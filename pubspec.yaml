@@ -24,6 +24,9 @@ dependencies:
   hive_flutter: ^1.1.0
   path_provider: ^2.1.5
   mockito: ^5.4.4
+  firebase_messaging: ^15.2.5
+  firebase_core: ^3.13.0
+
 
 dev_dependencies:
   flutter_test:

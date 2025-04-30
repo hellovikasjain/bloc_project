@@ -2,6 +2,8 @@ import 'package:assessment/Features/Detail/Data/detail_repo_implementaion.dart';
 import 'package:assessment/Features/Detail/Presentation/detail_bloc.dart';
 import 'package:assessment/Features/History/Data/history_repo_implementation.dart';
 import 'package:assessment/Features/History/Presentation/history_bloc.dart';
+import 'package:assessment/FireBase/firebase_api.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:assessment/Features/Home/Presentation/home_page.dart';
@@ -11,6 +13,9 @@ import 'package:hive_flutter/adapters.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+  );
+  await FirebaseApi().initNotification();
   await Hive.initFlutter();
   await Hive.openBox("dogBox");
   Hive.init("dogBox");

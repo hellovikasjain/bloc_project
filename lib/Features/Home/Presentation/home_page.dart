@@ -7,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../MethodChennal/battery_native_code.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -112,8 +114,25 @@ class _HomePageState extends State<HomePage> {
           );
         }, )),
 
-       floatingActionButton: FloatingActionButton(onPressed: ()=>context.read<HomePageBloc>().add(FetchDataEvent(a)),
-       child:const  Icon(CupertinoIcons.add),),
+       floatingActionButton: Column(
+         mainAxisAlignment: MainAxisAlignment.end,
+
+         children: [
+           FloatingActionButton(
+             heroTag: 'unique_tag_2',
+             onPressed: ()=>context.read<HomePageBloc>().add(FetchDataEvent(a)),
+           child:const  Icon(CupertinoIcons.arrow_2_circlepath),),
+
+           const SizedBox(
+             height: 30,
+           ),
+
+           FloatingActionButton(
+             heroTag: 'unique_tag_1',
+             onPressed:  ()=>Navigator.push(context,MaterialPageRoute(builder:  (context)=>BatteryLevel())),
+             child:const  Icon(CupertinoIcons.battery_0),),
+         ],
+       ),
     );
   }
 }
