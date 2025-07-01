@@ -25,6 +25,17 @@ class _BatteryLevelState extends State<BatteryLevel> {
     });
   }
 
+  Future<void> printName()async{
+    try{
+      final result = await platform.invokeMethod<String>('printUser',{'name': 'Jain sahab'});
+      print("Native response: >>>> $result");
+    }
+      on PlatformException  catch(e){
+      print(e.toString());
+      }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +50,11 @@ class _BatteryLevelState extends State<BatteryLevel> {
             ElevatedButton(
               onPressed: _getBatteryLevel,
               child: Text('Get Battery Level'),
+            ),
+
+            ElevatedButton(
+              onPressed: printName,
+              child: Text('send to native'),
             ),
           ],
         ),

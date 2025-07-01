@@ -1,12 +1,18 @@
+import 'package:assessment/Bloc%20and%20Cubit/Bloc%20Example/Presentation/todo_screen.dart';
+import 'package:assessment/Bloc%20and%20Cubit/Cubit/Presentation/todo_cubit_screen.dart';
 import 'package:assessment/Features/Detail/Presentation/detail_page.dart';
 import 'package:assessment/Features/History/Presentation/history_page.dart';
 import 'package:assessment/Features/Home/Presentation/home_page_bloc.dart';
 import 'package:assessment/Features/Home/Presentation/home_page_event.dart';
 import 'package:assessment/Features/Home/Presentation/home_page_state.dart';
+import 'package:assessment/Graph/line_chart_screen.dart';
+import 'package:assessment/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../Form/multi_page_form.dart';
 import '../../../MethodChennal/battery_native_code.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,7 +49,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Dogs List"),
+        title: Text(AppLocalizations.of(context)!.title),
 
         actions: [
 
@@ -70,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                   return Padding(padding: const EdgeInsets.all(10),
                     child: GestureDetector(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage(dogListModal: state.dogData[item])));
+                        context.push('/detail',extra:  state.dogData[item]);
                       },
                       child: Row(
                         children: [
@@ -124,13 +130,42 @@ class _HomePageState extends State<HomePage> {
            child:const  Icon(CupertinoIcons.arrow_2_circlepath),),
 
            const SizedBox(
-             height: 30,
+             height: 10,
            ),
 
            FloatingActionButton(
              heroTag: 'unique_tag_1',
-             onPressed:  ()=>Navigator.push(context,MaterialPageRoute(builder:  (context)=>BatteryLevel())),
+             onPressed:  ()=> context.push('/method'),
              child:const  Icon(CupertinoIcons.battery_0),),
+           const SizedBox(
+             height: 10,
+           ),
+
+           FloatingActionButton(
+             heroTag: 'unique_tag_3',
+             onPressed:  ()=>context.push('/todo-bloc'),
+             child:const  Icon(CupertinoIcons.move),),
+           const SizedBox(
+             height: 10,
+           ),
+           FloatingActionButton(
+             heroTag: 'unique_tag_4',
+             onPressed:  ()=>context.push('/todo-cubit'),
+             child:const  Icon(CupertinoIcons.map_pin),),
+           const SizedBox(
+             height: 10,
+           ),
+           FloatingActionButton(
+             heroTag: 'unique_tag_5',
+             onPressed: ()=>context.push('/line-chart'),
+             child:const  Icon(CupertinoIcons.chart_bar),),
+           const SizedBox(
+             height: 10,
+           ),
+           FloatingActionButton(
+             heroTag: 'unique_tag_6',
+             onPressed: ()=>context.push('/multi-form'),
+             child:const  Icon(CupertinoIcons.textformat),),
          ],
        ),
     );

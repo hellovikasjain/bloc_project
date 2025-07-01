@@ -1,0 +1,10 @@
+{
+  "title": "Hello",
+  "welcome": "Welcome, {name}!",
+  "@welcome": {
+    "description": "Welcome message with user's name",
+    "placeholders": {
+      "name": {}
+    }
+  }
+}

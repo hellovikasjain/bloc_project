@@ -1,12 +1,13 @@
 import 'package:assessment/Features/Detail/Domain/detail_repo_definition.dart';
+import 'package:assessment/Features/Detail/Domain/dog_detail_use_cases.dart';
 import 'package:assessment/Features/Detail/Presentation/DetailEvent.dart';
 import 'package:assessment/Features/Detail/Presentation/DetailState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailBoc extends Bloc<DetailsEvent,DetailState>{
 
-  DetailRepoDefinition detailRepoDefinition;
-  DetailBoc({required this.detailRepoDefinition}):super(AdoptInitialState()){
+  AdoptDogUseCase adoptDogUseCase;
+  DetailBoc({required this.adoptDogUseCase}):super(AdoptInitialState()){
 
     on<AdoptEvent>((event,emit)async{
 
@@ -14,7 +15,7 @@ class DetailBoc extends Bloc<DetailsEvent,DetailState>{
 
       await Future.delayed(const Duration(seconds: 2));
 
-      await detailRepoDefinition.adoptDog(event.data);
+      await adoptDogUseCase(event.data);
 
       emit(AdoptIsCompleted());
 

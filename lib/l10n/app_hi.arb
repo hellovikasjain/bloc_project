@@ -1,0 +1,10 @@
+{
+  "title": "नमस्ते",
+  "welcome": "स्वागत है, {name}!",
+  "@welcome": {
+    "description": "यूज़र के नाम के साथ स्वागत संदेश",
+    "placeholders": {
+      "name": {}
+    }
+  }
+}

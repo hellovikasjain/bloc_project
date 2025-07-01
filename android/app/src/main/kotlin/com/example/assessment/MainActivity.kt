@@ -22,7 +22,14 @@ class MainActivity: FlutterActivity() {
                 } else {
                     result.error("UNAVAILABLE", "Battery level not available.", null)
                 }
-            } else {
+            }
+            else if(call.method=="printUser"){
+                val name= call.argument<String>("name")
+                println("Recieved from flutter:>>>>>>>>>> $name")
+
+                result.success("hello vikas from native")
+            }
+            else {
                 result.notImplemented()
             }
         }
